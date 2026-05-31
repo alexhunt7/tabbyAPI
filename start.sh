@@ -2,24 +2,20 @@
 
 cd "$(dirname "$0")" || exit
 
-if command -v uv >/dev/null 2>&1; then
-    HAS_UV=1
-else
-    HAS_UV=0
+VENV_DIR=".venv"
+
+if ! command -v uv >/dev/null 2>&1; then
+    echo "Could not find uv." >&2
+    exit 1
 fi
 
 if [ -n "$CONDA_PREFIX" ]; then
     echo "It looks like you're in a conda environment. Skipping venv check."
 else
-    if [ ! -d "venv" ]; then
+    if [ ! -d "${VENV_DIR}" ]; then
         echo "Venv doesn't exist! Creating one for you."
 
-        if [ "$HAS_UV" -eq 1 ]; then
-            echo "It looks like you're using uv. Running appropriate commands."
-            uv venv venv -p 3.13
-        else
-            python3 -m venv venv
-        fi
+        uv venv "${VENV_DIR}" -p 3.13
 
         if [ -f "start_options.json" ]; then
             echo "Removing old start_options.json"
@@ -30,7 +26,7 @@ else
     echo "Activating venv"
 
     # shellcheck source=/dev/null
-    source venv/bin/activate
+    source "${VENV_DIR}/bin/activate"
 fi
 
 python3 start.py "$@"

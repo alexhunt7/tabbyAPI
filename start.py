@@ -53,8 +53,8 @@ def get_install_features(lib_name: str = None):
         has_amd_gpu = has_rocm or has_amd
 
         if has_nvidia and not has_amd_gpu:
-            lib_name = "cu12"
-            print("Auto-detected NVIDIA GPU. Using CUDA 12.x backend.")
+            lib_name = "cu13"
+            print("Auto-detected NVIDIA GPU. Using CUDA 13.x backend.")
         elif has_amd_gpu and not has_nvidia:
             lib_name = "amd"
             print("Auto-detected AMD GPU. Using AMD backend.")
