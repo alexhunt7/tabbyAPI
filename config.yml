@@ -93,8 +93,8 @@ model:
   #cache_size: 4096
   #cache_size: 65536
   #cache_size: 81920
-  #cache_size: 98304
-  cache_size: 131072
+  cache_size: 98304
+  #cache_size: 131072
 
   # Enable different cache modes for VRAM savings (default: FP16).
   # Possible values for exllamav2: 'FP16', 'Q8', 'Q6', 'Q4'.
