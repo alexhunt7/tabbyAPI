@@ -16,7 +16,7 @@ else
 
         if [ "$HAS_UV" -eq 1 ]; then
             echo "It looks like you're using uv. Running appropriate commands."
-            uv venv venv -p 3.12
+            uv venv venv -p 3.13
         else
             python3 -m venv venv
         fi
