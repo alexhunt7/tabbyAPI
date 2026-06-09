@@ -67,7 +67,8 @@ model:
   # An initial model to load.
   # Make sure the model is located in the model directory!
   # REQUIRED: This must be filled out to load a model on startup.
-  model_name: Qwen3.6-27B-exl3-4.15bpw
+  #model_name: Qwen3.6-27B-exl3-4.15bpw
+  model_name: Qwen3.6-27B-exl3-5bpw
 
   # Names of args to use as a fallback for API load requests (default: []).
   # For example, if you always want cache_mode to be Q4 instead of on the inital model load, add "cache_mode" to this array.
@@ -91,9 +92,9 @@ model:
   # ExllamaV2 note: On AMD GPUs and NVIDIA GPUs older than Ampere, this value
   # is ignored. Please use max_seq_len
   #cache_size: 4096
-  #cache_size: 65536
+  cache_size: 65536
   #cache_size: 81920
-  cache_size: 98304
+  #cache_size: 98304
   #cache_size: 131072
 
   # Enable different cache modes for VRAM savings (default: FP16).
@@ -118,11 +119,11 @@ model:
 
   # Reserve VRAM used for autosplit loading (default: 96 MB on GPU 0).
   # Represented as an array of MB per GPU.
-  autosplit_reserve: [768, 256]
+  autosplit_reserve: [768, 512]
 
   # An integer array of GBs of VRAM to split between GPUs (default: []).
   # Used with tensor parallelism.
-  gpu_split: [15, 7]
+  gpu_split: [15, 8]
 
   # NOTE: If a model has YaRN rope scaling, it will automatically be enabled by ExLlama.
   # rope_scale and rope_alpha settings won't apply in this case.
